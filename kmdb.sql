@@ -87,7 +87,7 @@ CREATE TABLE top_cast (
   top_cast_id INTEGER PRIMARY KEY AUTOINCREMENT,
   movie_id INTEGER,
   actor TEXT,
-  character TEXT,
+  character_name TEXT,
   FOREIGN KEY (movie_id) REFERENCES movies (movie_id) 
 );
 
@@ -103,14 +103,43 @@ CREATE TABLE top_cast (
 INSERT INTO movies (movie_title, year_released, mpaa_rating, director) 
 VALUES
 	('Batman Begins', 2005, 'PG-13', 'Christopher Nolan'),
-	('Batman Begins', 2005, 'PG-13', 'Christopher Nolan'),
-	('Batman Begins', 2005, 'PG-13', 'Christopher Nolan');
+	('The Dark Knight', 2008, 'PG-13', 'Christopher Nolan'),
+	('The Dark Knight Rises', 2012, 'PG-13', 'Christopher Nolan');
 
-INSERT INTO movies (movie_title, year_released, mpaa_rating, director) 
+
+-- Batman Begins          Christian Bale        Bruce Wayne
+-- Batman Begins          Michael Caine         Alfred
+-- Batman Begins          Liam Neeson           Ra's Al Ghul
+-- Batman Begins          Katie Holmes          Rachel Dawes
+-- Batman Begins          Gary Oldman           Commissioner Gordon
+-- The Dark Knight        Christian Bale        Bruce Wayne
+-- The Dark Knight        Heath Ledger          Joker
+-- The Dark Knight        Aaron Eckhart         Harvey Dent
+-- The Dark Knight        Michael Caine         Alfred
+-- The Dark Knight        Maggie Gyllenhaal     Rachel Dawes
+-- The Dark Knight Rises  Christian Bale        Bruce Wayne
+-- The Dark Knight Rises  Gary Oldman           Commissioner Gordon
+-- The Dark Knight Rises  Tom Hardy             Bane
+-- The Dark Knight Rises  Joseph Gordon-Levitt  John Blake
+-- The Dark Knight Rises  Anne Hathaway         Selina Kyle
+
+INSERT INTO top_cast (movie_title, actor, character_name) 
 VALUES
-	('Batman Begins', 2005, 'PG-13', 'Christopher Nolan'),
-	('Batman Begins', 2005, 'PG-13', 'Christopher Nolan'),
-	('Batman Begins', 2005, 'PG-13', 'Christopher Nolan');
+	(1, 'Christian Bale', 'Bruce Wayne'),
+	(1, 'Michael Caine', 'Alfred'),
+    (1, 'Liam Neeson', 'Ras Al Gul'),
+    (1, 'Katie Holmes', 'Rachel Dawes'),
+    (1, 'Gary Oldman', 'Commissioner Gordon'),
+    (2, 'Christian Bale', 'Bruce Wayne'),
+	(2, 'Heath Ledger', 'Joker'),
+    (2, 'Aaron Eckhart', 'Harvey Dent'),
+    (2, 'Michael Caine', 'Alfred'),
+    (2, 'Maggie Gyllenhaal', 'Rachel Dawes'),
+    (3, 'Christian Bale', 'Bruce Wayne'),
+    (3, 'Gary Oldman', 'Commissioner Gordon'),
+    (3, 'Tom Hardy', 'Bane'),
+    (3, 'Joseph Gordon-Levitt', 'John Blake'),
+    (3, 'Anne Hathaway', 'Selina Kyle'),
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -128,7 +157,7 @@ Select * from movies;
 .print "========"
 .print ""
 
-Select m.movie_title, t.actor, t.character
+Select m.movie_title, t.actor, t.character_name
 From movies m, top_cast t
 Where
 m.movie_id = t.movie_id;
