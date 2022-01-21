@@ -65,6 +65,7 @@
 -- Turns column mode on but headers off
 .mode column
 .headers off
+.width 22
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
@@ -133,7 +134,7 @@ VALUES
 -- The SQL statement for the movies output
 -- TODO!
 
-Select * from movies;
+Select movie_title, year_released, mpaa_rating, director from movies;
 
 -- Prints a header for the cast output
 .print ""
@@ -141,10 +142,10 @@ Select * from movies;
 .print "========"
 .print ""
 
+-- The SQL statement for the cast output
+-- TODO!
+
 Select m.movie_title, t.actor, t.character_name
 From movies m, top_cast t
 Where
 m.movie_id = t.movie_id;
-
--- The SQL statement for the cast output
--- TODO!
